@@ -1,0 +1,64 @@
+<body>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <div class="container">
+        <h1>To-Do Application</h1>
+    
+        <hr>
+        <form id="submitForm" (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="task" placeholder="Enter task" ngModel name="task" required>
+                <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required
+                    field</small>
+            </div>
+            <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <button class ="exportbutton"(click)="exportToCSV()">Export to CSV</button>
+         <hr>
+        <div *ngFor="let task of taskArray; let i = index">
+            <div>
+              <span *ngIf="!task.isEditable">{{ task.taskName }}</span>
+              <input *ngIf="task.isEditable" [(ngModel)]="task.taskName" (blur)="onSave(i, task.taskName)" />
+            </div>
+            
+            <div class="history-log">
+              <h3>History:</h3>
+              <ul>
+                <li *ngFor="let log of task.history">{{ log }}</li>
+              </ul>
+            </div>
+          </div>      
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="task" scope="col">Task</th>
+                    <th class="work" scope="col">Completed</th>
+                    <th class="work" scope="col">Delete</th>
+                    <th class="work" scope="col">Edit</th>
+                    <th class="work" scope="col">Save</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of taskArray; index as i">
+                    <td>
+    
+                        <input [ngClass]="{'edit': t.isEditable, 'not-edit': !t.isEditable, 'crossed': t.isCompleted}"
+                            #taskinput type="text" class="form-control" id="taskInTable" value="{{t.taskName}}"
+                            [readOnly]="!t.isEditable">
+                    </td>
+                    <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox"></td>
+                    <td><button id="delete"  (click)="onDelete(i)">Delete</button></td>
+                    <td><button id="edit"  (click)="onEdit(i)"
+                            [disabled]="t.isEditable">Edit</button></td>
+                    <td><button id="save"  (click)="onSave(i, taskinput.value)"
+                            [disabled]="t.isEditable">Save</button></td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+    </body>
+    

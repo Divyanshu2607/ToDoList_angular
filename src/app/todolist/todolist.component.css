@@ -1,0 +1,149 @@
+:root {
+  --primary-color: #3a5a78;
+  --secondary-color: #f4f4f4;
+  --text-color: #333;
+  --accent-color: #6c9ab1;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#submitButton, .exportbutton {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submitButton:hover, .exportbutton:hover {
+  background-color: var(--accent-color);
+}
+
+.exportbutton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#delete, #edit, #save {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#edit {
+  background-color: #3498db;
+  color: white;
+}
+
+#save {
+  background-color: #2ecc71;
+  color: white;
+}
+
+#delete:hover, #edit:hover, #save:hover {
+  opacity: 0.8;
+}
+
+.history-log {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+.history-log h3 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.history-log ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.history-log li {
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .exportbutton {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
